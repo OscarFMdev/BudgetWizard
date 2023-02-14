@@ -14,4 +14,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :entities
   has_many :groups
+
+  validates :name, presence: true
+  validates :email, presence: true
 end
