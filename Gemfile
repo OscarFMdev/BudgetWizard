@@ -3,6 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.0'
 
+# Devise for user authentication
+gem 'devise'
+
+# ActiveStorage for images
+gem 'activestorage'
+
 # Ruby linters
 gem 'rubocop', '>= 1.0', '< 2.0'
 
@@ -65,4 +71,10 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+end
+
+group :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
 end
