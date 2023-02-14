@@ -1,0 +1,14 @@
+
+<% if current_user %>
+  <h1>Hello <%= "#{current_user.role} #{current_user.name}" %></h1>
+  <%= link_to "Logout", destroy_user_session_path, 'data-turbo-method': :delete %>
+
+<% else %>
+  <h1>You're not signed in</h1>
+
+  <%= link_to "Sign up", new_user_registration_path %>
+  <br />
+  <%= link_to "Login", new_user_session_path %>
+
+
+<% end %>
