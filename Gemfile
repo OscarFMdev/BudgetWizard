@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.0'
 
-
 # Devise for user authentication
 gem 'devise'
 
@@ -75,7 +74,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails'
 end

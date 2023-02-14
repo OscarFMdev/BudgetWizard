@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  enum role: [:user, :moderator, :admin]
-  after_initialize :set_default_role, :if => :new_record?
+  enum role: %i[user moderator admin]
+  after_initialize :set_default_role, if: :new_record?
 
   def set_default_role
-    self.role || :user
+    role || :user
   end
 
   has_one_attached :avatar
