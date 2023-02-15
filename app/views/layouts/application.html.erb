@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyBudgetApp</title>
+    <title>Budget Wizard</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,7 +14,8 @@
   </head>
 
   <body>
-      <% if notice %>
+  <%= render partial: 'shared/header', locals: { header: @header || "Budget Wizard" } %>
+    <% if notice %>
       <div class="alert-success">
         <%= notice %>
       </div>

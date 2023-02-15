@@ -1,0 +1,24 @@
+<main class="body-container">
+  <section class="container">
+    <%= image_tag @group.icon, class: "avatar" if @group.icon.attached? %>
+    <p><strong>Author:</strong> <%= @group.author.name %></p>
+
+    <p><strong>Created at:</strong> <%= @group.created_at %></p>
+
+    <p><strong>Transactions:</strong></p>
+
+    <ul>
+      <% @group.entities.each do |entity| %>
+        <li><%= entity.name %> - <%= entity.amount %></li>
+      <% end %>
+    </ul>
+
+    <%= link_to 'Add a transaction', new_user_group_entity_path(current_user, @group), class: "blue-btn" %>
+
+
+    <%= link_to 'Edit', edit_user_group_path(@group), class: 'blue-btn' %>
+    <%= link_to 'Back', user_groups_path, class: 'gray-btn' %>
+    <%= button_to "Delete category", user_group_path(@group.id), method: :delete, data: { confirm: "Are you sure?" }, class:"delete-btn" %>
+
+  </section>
+</main>
