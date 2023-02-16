@@ -1,46 +1,63 @@
-<section class="registration">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {multipart: true}) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+<main class="body-container">
+  <section class="registration">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {multipart: true}) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.text_field :name, autofocus: true, placeholder: "Full name", autocomplete: "name" %>
-    </div>
+      <div class="field">
+        <%= f.text_field :name, autofocus: true, placeholder: "Full name", autocomplete: "name" %>
+      </div>
 
-    <div class="field">
-      <div class="file-input-wrapper">
-        <span>Choose file</span>
+      <div class="field">
         <%= f.file_field :avatar, id: "user_avatar" %>
+      
+        <br>
+        <div class="avatar-preview-container">
+          <% if resource.avatar.attached? %>
+            <%= image_tag resource.avatar, class: "avatar" %>
+          <% else %>
+            <%= image_tag 'default-avatar.webp', class: "avatar" %>
+          <% end %>
+        </div>
       </div>
-      <% if resource.avatar.attached? %>
-        <%= image_tag resource.avatar, class: "avatar" %>
-      <% else %>
-        <%= image_tag 'default-avatar.webp', class: "avatar"  %>
-      <% end %>
-    </div>
 
 
-    <div class="field">
-      <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: "email" %>
-    </div>
-
-
-    <div class="field">
-      <div class="flex">
-        <%= f.password_field :password, placeholder: "Password 6 characters minimum", autocomplete: "new-password" %>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: "email" %>
       </div>
-    </div>
 
-    <div class="field">
-      <div class="flex">
-        <%= f.password_field :password_confirmation, placeholder: "Confirm password", autocomplete: "new-password" %>
+
+      <div class="field">
+        <div class="flex">
+          <%= f.password_field :password, placeholder: "Password 6 characters minimum", autocomplete: "new-password" %>
+        </div>
       </div>
-    </div>
 
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
+      <div class="field">
+        <div class="flex">
+          <%= f.password_field :password_confirmation, placeholder: "Confirm password", autocomplete: "new-password" %>
+        </div>
+      </div>
 
-  <%= render "devise/shared/links" %>
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
 
-</section>
+    <%= render "devise/shared/links" %>
+
+  </section>
+<main>
+
+<script>
+  const avatarInput = document.querySelector('#user_avatar');
+  const previewContainer = document.querySelector('.avatar-preview-container');
+  avatarInput.addEventListener('change', function() {
+    const file = avatarInput.files[0];
+    const url = URL.createObjectURL(file);
+    const previewImg = document.createElement('img');
+    previewImg.src = url;
+    previewImg.classList.add('avatar');
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(previewImg);
+  });
+</script>

@@ -9,12 +9,18 @@
 <section class="groups-container">
 <%= link_to "Add New Category", new_user_group_path(current_user), class: "add-btn blue-btn" %>
   <% @groups.each do |group| %>
-    <div class="group-card">
       <%= link_to user_group_path(current_user, group) do %>
-        <%= image_tag group.icon, class: "group-icon" if group.icon.attached? %>
-        <h3> <%= group.name %> </h3>
+    <div class="group-card">
+    <div class="group-info">
+      <% if group.icon.attached? %>
+        <%= image_tag group.icon, class: "group-icon" %>
+      <% else %>
+        <%= image_tag "default_product_image.webp", class: "group-icon" %>
       <% end %>
-      <p>Total amount: <%= group.entities.sum(:amount) %></p>
+      <h3> <%= group.name %> </h3>
     </div>
+      <p id="total-amount">Total amount: $<%= group.entities.sum(:amount) %></p>
+    </div>
+      <% end %>
   <% end %>
 </section>

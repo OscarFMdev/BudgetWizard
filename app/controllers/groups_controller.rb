@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   def index
-    @header = "Categories"
-    @groups = Group.where(user_id: current_user.id)
+    @header = 'Categories'
+    @groups = Group.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def show
@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @header = "Edit category"
+    @header = 'Edit category'
     @group = Group.find(params[:id])
   end
 
@@ -22,10 +22,9 @@ class GroupsController < ApplicationController
       render :edit
     end
   end
-  
 
   def new
-    @header = "New category"
+    @header = 'New category'
     @group = Group.new
   end
 
@@ -46,8 +45,8 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-  
-    redirect_to user_groups_path, notice: "Group was successfully deleted."
+
+    redirect_to user_groups_path, notice: 'Group was successfully deleted.'
   end
 
   private

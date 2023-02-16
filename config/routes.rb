@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'entities/new'
+  get 'entities/destroy'
+  get 'entities/edit'
+  get 'entities/update'
+  get 'entities/index'
   devise_for :users, sign_out_via: [:get, :post]
   resources :users do
     resources :groups do

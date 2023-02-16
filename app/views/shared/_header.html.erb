@@ -10,7 +10,12 @@
     <h1><%= header %></h1>
   </div>
 
-  <div>
+  <div class="home-icon">
+    <% if current_user %>
+      <%= link_to root_path do %>
+        <i class="fas fa-home"></i>
+      <% end %>
+    <% end %>
   </div>
 </section>
 
