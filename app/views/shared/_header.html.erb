@@ -1,0 +1,36 @@
+<!-- Menu button -->
+<section class="navigation-bar">
+  <div class="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="header">
+    <h1><%= header %></h1>
+  </div>
+
+  <div class="home-icon">
+    <% if current_user %>
+      <%= link_to root_path do %>
+        <i class="fas fa-home"></i>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+<!-- Navigation menu -->
+<nav class="menu">
+  <ul>
+
+    <% if current_user %>
+      <li><%= link_to 'Home', root_path, id: "option" %></li>
+      <li><%= link_to 'Profile', user_path(current_user), id: "option" %></li>
+      <li><%= link_to 'Categories', user_groups_path(current_user), id: "option" %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, id: "option" %></li>
+    <% else %>
+      <li><%= link_to 'Login', new_user_session_path, id: "option" %></li>
+      <li><%= link_to 'Signup', new_user_registration_path, id: "option" %></li>
+    <% end %>
+  </ul>
+</nav>

@@ -1,0 +1,41 @@
+<main class="body-container">
+  <section class="container">
+   <p><strong>Total transactions:</strong> $<%= @group.entities.sum(:amount) %></p> 
+    <div class="group-info">
+      <% if @group.icon.attached? %>
+        <%= image_tag @group.icon, class: "group-icon" %>
+      <% else %>
+        <%= image_tag "default_product_image.webp", class: "group-icon" %>
+      <% end %>
+    </div>
+    <p><strong>Author:</strong> <%= @group.author.name %></p>
+
+    <p><strong>Created at:</strong> <%= @group.created_at.strftime('%B %d, %Y at %I:%M %p') %> UTC</p>
+
+
+    <p><strong>Transactions:</strong></p>
+
+    <%= link_to "See all transactions", user_group_entities_path(current_user, @group), class: "all-transactions" %>
+
+    <ul>
+      <% if @group.entities.empty? %>
+        <p>No transactions record</p>
+      <% end %>
+      <% @group.entities.each do |entity| %>
+        <li class="transaction">
+          <p><%= entity.name %></p>
+          <p>$<%= entity.amount %></p>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to 'Add a transaction', new_user_group_entity_path(current_user, @group), class: "blue-btn" %>
+
+
+    <div class="buttons">
+      <%= link_to 'Edit', edit_user_group_path(@group), class: 'blue-btn' %>
+      <%= link_to 'Back', user_groups_path, class: 'gray-btn' %>
+    </div>
+    <%= button_to "Delete category", user_group_path(@group.id), method: :delete, data: { confirm: "Are you sure?" }, class:"delete-btn" %>
+
+  </section>
+</main>

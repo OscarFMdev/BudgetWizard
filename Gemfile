@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.0'
 
+# Letter opener
+gem 'letter_opener', group: :development
+
 # Devise for user authentication
 gem 'devise'
 

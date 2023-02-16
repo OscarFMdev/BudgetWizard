@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyBudgetApp</title>
+    <title>Budget Wizard</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,12 +9,16 @@
     <%# Google fonts %>
     <link href="https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap" rel="stylesheet">
 
+    <%# Font awesome %>
+    <script src="https://kit.fontawesome.com/09255b1703.js" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-      <% if notice %>
+  <%= render partial: 'shared/header', locals: { header: @header || "Budget Wizard" } %>
+    <% if notice %>
       <div class="alert-success">
         <%= notice %>
       </div>

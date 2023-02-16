@@ -1,0 +1,17 @@
+<main class="body-container">
+  <section class="container">
+    <h1>Profile</h1>
+
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar, class: "avatar" %>
+    <% else %>
+      <%= image_tag 'default-avatar.webp', class: "avatar"  %>
+    <% end %>
+
+    <p>Name: <%= current_user.name %></p>
+    <p>Email: <%= current_user.email %></p>
+
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "blue-btn" %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "blue-btn" %>
+  </section>
+</main>

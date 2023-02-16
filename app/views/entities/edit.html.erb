@@ -1,0 +1,31 @@
+<main class="body-container">
+  <section class="container">
+    <%= form_with(model: [current_user, @group, @entity], local: true) do |form| %>
+      <% if @entity.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
+
+          <ul>
+            <% @entity.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= form.label :amount %>
+        <%= form.number_field :amount %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </section>
+</main>

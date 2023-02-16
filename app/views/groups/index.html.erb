@@ -1,0 +1,26 @@
+<% if current_user.groups.none? %>
+  <div class="introduction">
+    <h2>Welcome to Wizard App! <%= current_user.name %></h2>
+    <p>With this app, you can easily keep track of your expenses and income by adding transactions. You can group your transactions together to get a better overview of your spending and earnings This app is designed to be user-friendly and easy to navigate, so you can quickly and easily manage your finances. Whether you're trying to save money, pay off debt, or just want to keep better track of your spending, this app can help you achieve your financial goals. Start using this app today and take control of your money!</p>
+  </div>
+<% end %>
+
+
+<section class="groups-container">
+<%= link_to "Add New Category", new_user_group_path(current_user), class: "add-btn blue-btn" %>
+  <% @groups.each do |group| %>
+      <%= link_to user_group_path(current_user, group) do %>
+    <div class="group-card">
+    <div class="group-info">
+      <% if group.icon.attached? %>
+        <%= image_tag group.icon, class: "group-icon" %>
+      <% else %>
+        <%= image_tag "default_product_image.webp", class: "group-icon" %>
+      <% end %>
+      <h3> <%= group.name %> </h3>
+    </div>
+      <p id="total-amount">Total amount: $<%= group.entities.sum(:amount) %></p>
+    </div>
+      <% end %>
+  <% end %>
+</section>

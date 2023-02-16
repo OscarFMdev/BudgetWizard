@@ -1,0 +1,51 @@
+<% if @group.errors.any? %>
+  <div id="error_explanation">
+
+    <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li class="alert-danger"><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<main class="body-container">
+  <%= form_with model: @group, url: user_groups_path, class: "container", local: true, html: {multipart: true} do |f| %>
+
+    <div class="field">
+      <%= f.text_field :name, placeholder: "Category name", class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.file_field :icon, id: "user_avatar" %>
+      <br>
+      <div class="avatar-preview-container">
+        <% if @group.icon.attached? %>
+          <%= image_tag @group.icon, class: "avatar" %>
+        <% else %>
+          <%= image_tag 'default_product_image.webp', class: "avatar" %>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit class: 'btn btn-primary', data: { turbo: false } %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back', user_groups_path, class: 'gray-btn' %>
+</main>
+
+<script>
+  const avatarInput = document.querySelector('#user_avatar');
+  const previewContainer = document.querySelector('.avatar-preview-container');
+  avatarInput.addEventListener('change', function() {
+    const file = avatarInput.files[0];
+    const url = URL.createObjectURL(file);
+    const previewImg = document.createElement('img');
+    previewImg.src = url;
+    previewImg.classList.add('avatar');
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(previewImg);
+  });
+</script>
