@@ -6,6 +6,8 @@ ruby '3.1.0'
 # Letter opener
 gem 'letter_opener', group: :development
 
+gem "aws-sdk-s3"
+
 # Devise for user authentication
 gem 'devise'
 
@@ -80,4 +82,10 @@ group :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'rack_session_access'
+  gem 'capybara'
 end
+
+gem "dockerfile-rails", ">= 1.0", :group => :development
+
+gem "redis", "~> 5.0"
