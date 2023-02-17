@@ -38,7 +38,7 @@ RSpec.configure do |config|
 
   # Add rack_session_access to tests
   config.include RackSessionAccess::Capybara
-  
+
   # Add devise to tests
   config.include Devise::Test::IntegrationHelpers, type: :request
 
