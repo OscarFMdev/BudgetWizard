@@ -6,7 +6,9 @@ ruby '3.1.0'
 # Letter opener
 gem 'letter_opener', group: :development
 
+# aws gems
 gem "aws-sdk-s3"
+gem "aws-sdk-ses"
 
 # Devise for user authentication
 gem 'devise'
