@@ -8,6 +8,7 @@
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [🚀 Live Demo ](#-live-demo-)
+    - [Video documentation 📹](#video-documentation-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -68,6 +69,9 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 - [Live Demo Link](https://yourdeployedapplicationlink.com)
+
+### Video documentation 📹
+- [Video documentation](https://www.loom.com/share/ac09caece5d44647afebc939f68a82c9)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
