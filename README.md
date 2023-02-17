@@ -68,7 +68,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [Live Demo Link](https://budget-wizard.fly.dev/users/sign_in)
 
 ### Video documentation 📹
 - [Video documentation](https://www.loom.com/share/ac09caece5d44647afebc939f68a82c9)
