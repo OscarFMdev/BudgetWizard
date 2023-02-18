@@ -1,0 +1,62 @@
+<main class="body-container">
+  <section class="container">
+  <h2>Edit Profile</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.file_field :avatar, id: "user_avatar" %>
+    <br>
+    <div class="avatar-preview-container">
+      <% if resource.avatar.attached? %>
+        <%= image_tag resource.avatar, class: "avatar" %>
+      <% else %>
+        <%= image_tag 'default-avatar.webp', class: "avatar" %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: "email" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.password_field :current_password, placeholder: "Current password", autocomplete: "current-password" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+
+  <h3>Cancel my account</h3>
+
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "blue-btn" %></p>
+
+  <%= link_to "Back", :back, class: "gray-btn" %>
+
+  </section>
+
+</main>
+
+<script>
+  const avatarInput = document.querySelector('#user_avatar');
+  const previewContainer = document.querySelector('.avatar-preview-container');
+
+  avatarInput.addEventListener('change', function() {
+    const file = avatarInput.files[0];
+    const url = URL.createObjectURL(file);
+    const previewImg = document.createElement('img');
+    previewImg.src = url;
+    previewImg.classList.add('avatar');
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(previewImg);
+  });
+</script>

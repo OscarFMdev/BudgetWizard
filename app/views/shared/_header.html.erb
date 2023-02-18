@@ -1,0 +1,76 @@
+<!-- Menu button -->
+<section class="navigation-bar">
+  <div class="<%= user_signed_in? ? 'menu-btn signed-in' : 'not-signed-in' %>">
+    <% if !current_user %>
+        <div class="left-arrow">
+          <%= link_to welcome_path do%>
+              <i class="fa-solid fa-arrow-left"></i>
+          <% end %>
+        </div>
+    <% end %>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="header">
+    <h2 class="header-nav"><%= header %></h2>
+  </div>
+
+  <div class="search-icon">
+    <% if current_user %>
+      <% if current_page?(root_path) || current_page?(user_groups_path(current_user))%>
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
+    <% end %>
+  </div>
+
+</section>
+  <div class="search-form <%= 'hidden' unless params[:query].present? %>">
+    <% if current_user && (current_page?(root_path) || current_page?(user_groups_path(current_user))) %>
+      <%= form_with url: user_groups_path(current_user), method: :get do |f| %>
+        <%= f.text_field :query, placeholder: "Search...", autofocus: true, onChange: 'this.form.requestSubmit()', value: params[:query] %>
+        <%= submit_tag "Search" %>
+      <% end %>
+    <% end %>
+  </div>
+
+<!-- Navigation menu -->
+<nav class="menu">
+  <ul>
+
+    <% if current_user %>
+      <%= link_to user_path(current_user), id: "option" do %>
+      <li class="avatar">
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar, class: "avatar user-avatar" %>
+        <% else %>
+          <%= image_tag 'default-avatar.webp', class: "avatar user-avatar"  %>
+        <% end %>
+      </li>
+      <% end %>
+      <li class="user-name">User: <%= current_user.name %></li>
+      <li><%= link_to 'Home', root_path, id: "option" %></li>
+      <li><%= link_to 'Profile', user_path(current_user), id: "option" %></li>
+      <li><%= link_to 'Categories', user_groups_path(current_user), id: "option" %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, id: "option" %></li>
+    <% else %>
+      <li><%= link_to 'Login', new_user_session_path, id: "option" %></li>
+      <li><%= link_to 'Signup', new_user_registration_path, id: "option" %></li>
+    <% end %>
+  </ul>
+</nav>
+
+<script>
+  let searchIcon = document.querySelector('.search-icon');
+  let searchForm = document.querySelector('.search-form');
+
+    searchIcon.addEventListener('click', () => {
+      searchForm.classList.toggle('hidden');
+    });
+
+    searchForm.addEventListener('submit', () => {
+      searchForm.classList.remove('hidden');
+    });
+
+</script>
