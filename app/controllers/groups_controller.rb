@@ -3,6 +3,9 @@ class GroupsController < ApplicationController
   def index
     @header = 'Categories'
     @groups = Group.where(user_id: current_user.id).order(created_at: :desc)
+    return unless params[:query].present?
+
+    @groups = @groups.whose_name_starts_with(params[:query])
   end
 
   def show

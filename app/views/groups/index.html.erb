@@ -5,22 +5,21 @@
   </div>
 <% end %>
 
-
-<section class="groups-container">
-  <% @groups.each do |group| %>
-      <%= link_to user_group_path(current_user, group) do %>
-    <div class="group-card">
-    <div class="group-info">
-      <% if group.icon.attached? %>
-        <%= image_tag group.icon, class: "group-icon" %>
-      <% else %>
-        <%= image_tag "default_product_image.webp", class: "group-icon" %>
-      <% end %>
-      <h3> <%= group.name %> </h3>
-    </div>
-      <p id="total-amount">Total amount: $<%= group.entities.sum(:amount) %></p>
-    </div>
-      <% end %>
-  <% end %>
-<%= link_to "Add New Category", new_user_group_path(current_user), class: "add-btn green-btn" %>
-</section>
+  <section class="groups-container">
+    <% @groups.each do |group| %>
+        <%= link_to user_group_path(current_user, group) do %>
+      <div class="group-card">
+      <div class="group-info">
+        <% if group.icon.attached? %>
+          <%= image_tag group.icon, class: "group-icon" %>
+        <% else %>
+          <%= image_tag "default_product_image.webp", class: "group-icon" %>
+        <% end %>
+        <h3> <%= group.name %> </h3>
+      </div>
+        <p id="total-amount">Total amount: $<%= group.entities.sum(:amount) %></p>
+      </div>
+        <% end %>
+    <% end %>
+  <%= link_to "Add New Category", new_user_group_path(current_user), class: "add-btn green-btn" %>
+  </section>

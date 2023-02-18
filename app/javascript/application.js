@@ -24,8 +24,6 @@ document.querySelector('.file-input-wrapper').addEventListener('click', function
   document.querySelector('#user_avatar').click();
 });
 
-const uploadBtn = document.querySelector('#file-upload-button');
-
 const avatarInput = document.querySelector('#user_avatar');
 const previewContainer = document.querySelector('.avatar-preview-container');
 avatarInput.addEventListener('change', function() {

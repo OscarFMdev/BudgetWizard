@@ -33,5 +33,8 @@ module MyBudgetApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Allow multyquery
+    config.active_record.async_query_executor = :global_thread_pool
   end
 end

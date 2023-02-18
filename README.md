@@ -71,7 +71,7 @@
 - [Live Demo Link](https://budget-wizard.fly.dev/users/sign_in)
 
 ### Video documentation 📹
-- [Video documentation](https://www.loom.com/share/ac09caece5d44647afebc939f68a82c9)
+- [Video documentation](https://www.loom.com/share/92232080db5c4da895117deb00223e6a)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -127,6 +127,8 @@ Devise.setup do |config|
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 12
 
+  config.reconfirmable = false
+
   # Set up a pepper to generate the hashed password.
   # config.pepper = '0bb8533430fdc398e89cec0823f0926db1b50aee47ad32aad47ac318c356d790a4e213d414f69671150a4dc676e633548ad5a32b031e02a00612d98865afa72a'
 
@@ -159,7 +161,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]

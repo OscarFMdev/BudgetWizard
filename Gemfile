@@ -13,6 +13,9 @@ gem 'aws-sdk-ses'
 # Devise for user authentication
 gem 'devise'
 
+# Gem for searching groups
+gem 'pg_search', '~> 2.3'
+
 # ActiveStorage for images
 gem 'activestorage'
 

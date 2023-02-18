@@ -20,13 +20,24 @@
 
 .full-container {
   background-color: white;
-  height: calc(100vh - 69px);
+  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   row-gap: 150px;
+  animation: fade-in 2s ease-in forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .full-container h1 {
@@ -82,7 +93,7 @@ body {
   font-size: 1.5rem;
 }
 
-.home-icon i {
+.search-icon i {
   font-size: 1.5em;
   margin-right: 10px;
   color: white;
@@ -484,6 +495,7 @@ input[type="submit"]:hover,
   justify-content: flex-start;
   column-gap: 50%;
   background-color: white;
+  min-width: 609px;
 }
 
 #total-amount {
@@ -537,6 +549,10 @@ tbody tr:nth-child(even) {
 
 tbody tr:nth-child(odd) {
   background: #fff;
+}
+
+.hidden {
+  display: none;
 }
 
 @media only screen and (max-width: 700px) {
@@ -601,5 +617,6 @@ tbody tr:nth-child(odd) {
 
   .group-card {
     width: 95vw;
+    min-width: 95vw;
   }
 }

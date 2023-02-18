@@ -1,4 +1,12 @@
 class Group < ApplicationRecord
+  include PgSearch::Model
+
+  pg_search_scope :whose_name_starts_with,
+                  against: :name,
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   has_one_attached :icon
 
   validates :name, presence: true
