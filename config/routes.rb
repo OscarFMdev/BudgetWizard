@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/welcome', to: 'welcome#index', as: 'welcome'
   get 'entities/new'
   get 'entities/destroy'
   get 'entities/edit'
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   # Defines the root path route ("/")
-  root "groups#index"
+  root 'groups#index'
 end

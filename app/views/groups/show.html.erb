@@ -8,7 +8,6 @@
         <%= image_tag "default_product_image.webp", class: "group-icon" %>
       <% end %>
     </div>
-    <p><strong>Author:</strong> <%= @group.author.name %></p>
 
     <p><strong>Created at:</strong> <%= @group.created_at.strftime('%B %d, %Y at %I:%M %p') %> UTC</p>
 
@@ -28,14 +27,16 @@
         </li>
       <% end %>
     </ul>
-    <%= link_to 'Add a transaction', new_user_group_entity_path(current_user, @group), class: "blue-btn" %>
+    <%= link_to 'Add a transaction', new_user_group_entity_path(current_user, @group), class: "green-btn" %>
 
 
     <div class="buttons">
       <%= link_to 'Edit', edit_user_group_path(@group), class: 'blue-btn' %>
       <%= link_to 'Back', user_groups_path, class: 'gray-btn' %>
     </div>
-    <%= button_to "Delete category", user_group_path(@group.id), method: :delete, data: { confirm: "Are you sure?" }, class:"delete-btn" %>
+    <div class="delete-container">
+      <%= button_to "Delete category", user_group_path(@group.id), method: :delete, data: { confirm: "Are you sure?" }, class:"delete-group" %>
+    <div>
 
   </section>
 </main>

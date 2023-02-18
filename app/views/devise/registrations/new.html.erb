@@ -2,23 +2,22 @@
   <section class="registration">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {multipart: true}) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-
-      <div class="field">
-        <%= f.text_field :name, autofocus: true, placeholder: "Full name", autocomplete: "name" %>
-      </div>
-
-      <div class="field">
-        <%= f.file_field :avatar, id: "user_avatar" %>
-      
-        <br>
+      <div class="field image-field">
         <div class="avatar-preview-container">
           <% if resource.avatar.attached? %>
             <%= image_tag resource.avatar, class: "avatar" %>
           <% else %>
             <%= image_tag 'default-avatar.webp', class: "avatar" %>
           <% end %>
+          <%= f.file_field :avatar, id: "user_avatar" %>
+          <br>
         </div>
       </div>
+
+      <div class="field">
+        <%= f.text_field :name, autofocus: true, placeholder: "Full name", autocomplete: "name" %>
+      </div>
+
 
 
       <div class="field">
@@ -27,15 +26,13 @@
 
 
       <div class="field">
-        <div class="flex">
           <%= f.password_field :password, placeholder: "Password 6 characters minimum", autocomplete: "new-password" %>
+        <div class="flex">
         </div>
       </div>
 
       <div class="field">
-        <div class="flex">
-          <%= f.password_field :password_confirmation, placeholder: "Confirm password", autocomplete: "new-password" %>
-        </div>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm password", autocomplete: "new-password" %>
       </div>
 
       <div class="actions">

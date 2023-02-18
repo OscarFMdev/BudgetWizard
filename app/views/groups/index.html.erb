@@ -7,7 +7,6 @@
 
 
 <section class="groups-container">
-<%= link_to "Add New Category", new_user_group_path(current_user), class: "add-btn blue-btn" %>
   <% @groups.each do |group| %>
       <%= link_to user_group_path(current_user, group) do %>
     <div class="group-card">
@@ -23,4 +22,5 @@
     </div>
       <% end %>
   <% end %>
+<%= link_to "Add New Category", new_user_group_path(current_user), class: "add-btn green-btn" %>
 </section>

@@ -1,19 +1,26 @@
 <!-- Menu button -->
 <section class="navigation-bar">
-  <div class="menu-btn">
+  <div class="<%= user_signed_in? ? 'menu-btn signed-in' : 'not-signed-in' %>">
+    <% if !current_user %>
+        <div class="left-arrow">
+          <%= link_to request.referer do%>
+              <i class="fa-solid fa-arrow-left"></i>
+          <% end %>
+        </div>
+    <% end %>
     <span></span>
     <span></span>
     <span></span>
   </div>
 
   <div class="header">
-    <h1><%= header %></h1>
+    <h2 class="header-nav"><%= header %></h2>
   </div>
 
   <div class="home-icon">
     <% if current_user %>
       <%= link_to root_path do %>
-        <i class="fas fa-home"></i>
+        <i class="fa-solid fa-magnifying-glass"></i>
       <% end %>
     <% end %>
   </div>
@@ -24,6 +31,16 @@
   <ul>
 
     <% if current_user %>
+      <%= link_to user_path(current_user), id: "option" do %>
+      <li class="avatar">
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar, class: "avatar user-avatar" %>
+        <% else %>
+          <%= image_tag 'default-avatar.webp', class: "avatar user-avatar"  %>
+        <% end %>
+      </li>
+      <% end %>
+      <li class="user-name">User: <%= current_user.name %></li>
       <li><%= link_to 'Home', root_path, id: "option" %></li>
       <li><%= link_to 'Profile', user_path(current_user), id: "option" %></li>
       <li><%= link_to 'Categories', user_groups_path(current_user), id: "option" %></li>
