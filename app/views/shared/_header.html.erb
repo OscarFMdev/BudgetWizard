@@ -54,6 +54,9 @@
       <li><%= link_to 'Profile', user_path(current_user), id: "option" %></li>
       <li><%= link_to 'Categories', user_groups_path(current_user), id: "option" %></li>
       <li><%= link_to 'Logout', destroy_user_session_path, id: "option" %></li>
+      <% if current_user.role == 'admin' %>
+        <li><%= link_to "Users", users_path, id: 'option' %></li>
+      <% end %>
     <% else %>
       <li><%= link_to 'Login', new_user_session_path, id: "option" %></li>
       <li><%= link_to 'Signup', new_user_registration_path, id: "option" %></li>

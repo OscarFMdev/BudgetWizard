@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get 'entities/edit'
   get 'entities/update'
   get 'entities/index'
-  devise_for :users, sign_out_via: [:get, :post]
-  resources :users do
+  devise_for :users, sign_out_via: [:get, :post], controllers: { registrations: "users/registrations" }
+  resources :users, only: [:index, :show, :destroy] do
     resources :groups do
       resources :entities
     end

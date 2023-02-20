@@ -8,6 +8,8 @@
 #
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+Devise.sign_out_via = :delete
+
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -127,7 +129,7 @@ Devise.setup do |config|
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 12
 
-  config.reconfirmable = false
+  config.reconfirmable = true
 
   # Set up a pepper to generate the hashed password.
   # config.pepper = '0bb8533430fdc398e89cec0823f0926db1b50aee47ad32aad47ac318c356d790a4e213d414f69671150a4dc676e633548ad5a32b031e02a00612d98865afa72a'
@@ -147,7 +149,7 @@ Devise.setup do |config|
   # without confirming their account.
   # Default is 0.days, meaning the user cannot access the website without
   # confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
+  config.allow_unconfirmed_access_for = 2.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
