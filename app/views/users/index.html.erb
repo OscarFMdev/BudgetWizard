@@ -1,0 +1,17 @@
+ <section class="groups-container">
+    <% @users.each do |user| %>
+      <%= link_to user_path(user) do %>
+        <div class="group-card">
+          <div class="group-info">
+            <% if user.avatar.attached? %>
+              <%= image_tag user.avatar, class: "group-icon" %>
+            <% else %>
+              <%= image_tag "default_product_image.webp", class: "group-icon" %>
+            <% end %>
+          <h3> <%= user.name %> </h3>
+        </div>
+        <% end %>
+        <%= button_to "Delete", user_path(user), method: :delete, data: { confirm: "Are you sure you want to delete this user?" }, class: 'delete-btn' %>
+          </div>
+    <% end %>
+</section>

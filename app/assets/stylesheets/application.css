@@ -619,4 +619,20 @@ tbody tr:nth-child(odd) {
     width: 95vw;
     min-width: 95vw;
   }
+
+  .menu.active {
+    width: 100vw;
+  }
+
+  .white-btn,
+  .green-btn,
+  input[type="submit"],
+  .delete-group {
+    padding: 10px 0;
+  }
+
+  table {
+    width: 90vw;
+    font-size: 12px;
+  }
 }

@@ -1,6 +1,6 @@
 <main class="body-container">
   <section class="registration">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {multipart: true}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :post, multipart: true}) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="field image-field">
         <div class="avatar-preview-container">

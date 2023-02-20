@@ -66,8 +66,7 @@ Rails.application.configure do
 
   # config/environments/production.rb
 
-  config.action_mailer.perform_deliveries = true
-
+  
   config.action_mailer.default_url_options = { host: 'budget-wizard.fly.dev' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -79,7 +78,8 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
-
+  
+  config.action_mailer.perform_deliveries = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
