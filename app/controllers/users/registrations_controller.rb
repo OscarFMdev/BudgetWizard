@@ -1,22 +1,17 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  
-  
-  
   def update
     # Call the parent implementation to update the user's information
     super
-    
+
     # Handle the avatar separately, if it was changed
-    if params[:user][:avatar].present?
-      current_user.avatar.attach(params[:user][:avatar])
-    end
+    return unless params[:user][:avatar].present?
+
+    current_user.avatar.attach(params[:user][:avatar])
   end
-  
+
   # # GET /resource/sign_up
   # def new
   #   super
@@ -28,9 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super do |resource|
-      if params[:user][:avatar].present?
-        resource.avatar.attach(params[:user][:avatar])
-      end
+      resource.avatar.attach(params[:user][:avatar]) if params[:user][:avatar].present?
     end
   end
 

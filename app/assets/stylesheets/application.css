@@ -620,7 +620,7 @@ tbody tr:nth-child(odd) {
     min-width: 95vw;
   }
 
- .menu.active {
+  .menu.active {
     width: 100vw;
   }
 
